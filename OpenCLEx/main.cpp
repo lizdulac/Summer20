@@ -24,6 +24,7 @@
 
 #include <fstream>
 #include <string>
+#include <cassert>
 
 size_t gwx = 512;
 
@@ -93,7 +94,6 @@ static cl::Program createProgramWithIL(
     std::vector<cl::Device> devices = context.getInfo<CL_CONTEXT_DEVICES>();
     if (!devices.empty()) {
         cl::Platform platform{ devices[0].getInfo<CL_DEVICE_PLATFORM>() };
-#ifdef CL_VERSION_2_1
         if (getPlatformVersion(platform) >= 0x00020001) {
             program = clCreateProgramWithIL(
                 context(),
@@ -102,20 +102,8 @@ static cl::Program createProgramWithIL(
                 nullptr);
         }
         else
-#endif
         {
-            auto clCreateProgramWithILKHR_ = (clCreateProgramWithILKHR_fn)
-                clGetExtensionFunctionAddressForPlatform(
-                    platform(),
-                    "clCreateProgramWithILKHR");
-
-            if (clCreateProgramWithILKHR_) {
-                program = clCreateProgramWithILKHR_(
-                    context(),
-                    il.data(),
-                    il.size(),
-                    nullptr);
-            }
+	  assert(false);
         }
     }
 
