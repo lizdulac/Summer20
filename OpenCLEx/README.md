@@ -29,7 +29,7 @@ Platform #2: Intel(R) OpenCL HD Graphics
 ```
 
 Specify that the executable should be run with the OpenCL GPU platform using the `-p` flag:
-```sh
+```
 $ ./main -p 2
 Running on platform: Intel(R) OpenCL HD Graphics
 Running on device: Intel(R) Gen9 HD Graphics NEO
