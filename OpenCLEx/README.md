@@ -30,12 +30,12 @@ Platform #2: Intel(R) OpenCL HD Graphics
 
 Specify that the executable should be run with the OpenCL GPU platform using the `-p` flag:
 ```
-$ ./main -p 2
+$ ./main -p 2 -name sample_kernel.spv
 Running on platform: Intel(R) OpenCL HD Graphics
 Running on device: Intel(R) Gen9 HD Graphics NEO
 CL_DEVICE_ADDRESS_BITS is 64 for this device.
 Reading SPIR-V from file: sample_kernel64.spv
 Building program with build options: (none)
-Creating kernel: Test
+Creating kernel: sample_kernel.spv
 Done.
 ```
